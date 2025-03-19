@@ -1,0 +1,28 @@
+name: Deploy a Heroku
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Desplegar en Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ HRKU-441c2475-796b-494f-af06-bbb0c23c8249 }}
+          heroku_app_name: "my-evaluacionapp"
+          heroku_email: "kasahuntsegay3@gmail.com"

@@ -1,14 +1,16 @@
-name: Deploy a Heroku
-run: |
-    git remote add heroku https://git.heroku.com/my-evaluacionapp.git
-    git push heroku main
+- name: Add Heroku Git Remote
+  run: heroku git:remote -a my-evaluacionapp
 
-on:
+- name: Deploy to Heroku
+  run: git push heroku main
+ 
+
+  on:
   push:
     branches:
       - main
 
-jobs:
+  jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:

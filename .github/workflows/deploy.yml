@@ -1,4 +1,7 @@
 name: Deploy a Heroku
+run: |
+    git remote add heroku https://git.heroku.com/my-evaluacionapp.git
+    git push heroku main
 
 on:
   push:
@@ -19,6 +22,10 @@ jobs:
 
       - name: Instalar dependencias
         run: npm install
+      
+      - name: Install Heroku CLI
+        run: npm install -g heroku
+
 
       - name: Desplegar en Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
